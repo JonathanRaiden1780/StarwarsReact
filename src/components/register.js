@@ -8,7 +8,6 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import fire from '../configfire';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
-import Register from '../models/register'
 
 const firestore = fire.firestore();
 
@@ -25,22 +24,14 @@ const SignUp = (props) => {
             await firestore.collection('Registro').doc(email).set({
                 email: email,
                 name: name,
-                name: username,
+                username: username
             });
         }
         catch (error) {
             throw error;
         }
     }
-    const getUser = async (email) => {
-        try {
-            const userreg = await firestore.collection('Registro').doc(email);
-            const data = await userreg.get();
-            return data.data();
-        } catch (error) {
-            throw error;
-        }
-    }
+    
     const handleEmail = (event) => {
         setEmail(event.target.value);
     }
@@ -57,7 +48,7 @@ const SignUp = (props) => {
         setConfirmPassword(event.target.value);
     }
     const handleSignUp = () => {
-
+        addUser()
         fire.auth()
             .createUserWithEmailAndPassword(email, password)
             .then(response => {

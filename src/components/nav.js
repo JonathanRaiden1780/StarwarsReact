@@ -1,16 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {AppBar, Toolbar, IconButton, Typography, Menu, MenuItem, makeStyles} from '@material-ui/core';
 import {AccountCircle} from '@material-ui/icons';
+import fire from '../configfire';
 
 const NavBar = (props) => {
+    const firestore = fire.firestore();
+    const [name, setName] = useState('');
+    const [email, setemail] = useState('');
+    const [blogs,setBlogs]=useState([])
+
+    useEffect(() => {
+        fetchBlogs();
+      }, [])
+      const fetchBlogs=async()=>{
+        const response=firestore.collection('Registro').doc(localStorage.user.email);
+        const data=await response.get();
+        data.forEach(item=>{
+        setBlogs([...blogs,item.data()])
+    })
+    }
+    const getUser = async (email) => {
+        try {
+
+            const userreg = await firestore.collection('Registro').doc(email);
+            const data =  userreg.get();
+            const dafas =  (await data).data();
+            console.log(dafas);
+        } catch (error) {
+            throw error;
+        }
+    }
+    //const datauser = getUser(localStorage.user.email);
+    console.log(blogs);
     const classes = useStyles();
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-
+    console.log(localStorage);
     const handleClose = () => {
         localStorage.removeItem('user');
-        props.setUserState();
+        props.setUserState()
+        ;
         setAnchorEl(null);
     }
 
@@ -20,13 +50,14 @@ const NavBar = (props) => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" className={classes.menubackgroud}>
+            <AppBar position="static" className={classes.menubackgroud} >
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                        React Js with Firebase Authentication
+                        StarWars APP
                     </Typography>
                     {auth && (
                     <div>
+                        
                         <IconButton
                         aria-label="account of current user"
                         aria-controls="menu-appbar"
@@ -51,7 +82,6 @@ const NavBar = (props) => {
                         open={open}
                         onClose={handleClose}
                         >
-                        <MenuItem>Profile</MenuItem>
                         <MenuItem onClick={handleClose}>Logout</MenuItem>
                         </Menu>
                     </div>
@@ -67,7 +97,8 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1
     },
     menubackgroud: {
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        backgroundColor: 'black',
+        opacity:'0.6'
     }, 
     title: {
         flexGrow: 1

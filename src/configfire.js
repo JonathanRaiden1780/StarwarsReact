@@ -1,13 +1,13 @@
 import firebase from 'firebase';
 
 var firebaseConfig = {
-    apiKey: "AIzaSyB57FNv9JtoqI26vLhevozRCXvqrCU8GUo",
-    authDomain: "starwarsreactapp.firebaseapp.com",
-    projectId: "starwarsreactapp",
-    storageBucket: "starwarsreactapp.appspot.com",
-    messagingSenderId: "940618927632",
-    appId: "1:940618927632:web:2740493cfc5eb0bfc08495",
-    measurementId: "G-7YH737CE38"
+  apiKey: "AIzaSyBksTY5226HMnC3tqyFvUvN7KWzppXs7Gk",
+  authDomain: "react-starwarsapp.firebaseapp.com",
+  projectId: "react-starwarsapp",
+  storageBucket: "react-starwarsapp.appspot.com",
+  messagingSenderId: "697874527090",
+  appId: "1:697874527090:web:ec6533231897cdc9e023eb",
+  measurementId: "G-JGXY392EZM"
   };
  const fire =  firebase.initializeApp(firebaseConfig);
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import NavBar from './components/nav';
 import Login from './components/login';
 import SignUp from './components/register';
+import './app.css'
 //import Customer from './screens/Customer';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
     userState();
   }, []);
   return (
-    <>
+    <html className='app'> 
       {user !== null ? (
         <>
         <NavBar setUserState={() => setUser(null)}/>
@@ -33,7 +34,7 @@ function App() {
         
      </>
       )} 
-    </>
+    </html >
    
   );
 }

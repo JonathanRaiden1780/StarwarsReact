@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-
 import reportWebVitals from './reportWebVitals';
 import { ApolloClient, ApolloProvider, createHttpLink, HttpLink, InMemoryCache,split } from '@apollo/client';
 import { BrowserRouter } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 import { AUTH_TOKEN } from './services/auth';
 import { getMainDefinition } from '@apollo/client/utilities';
-
+import './app.css'
 const httpLink = createHttpLink({
   uri: 'https://us-east-1.aws.realm.mongodb.com/api/client/v2.0/app/starwarsapp-gbqiq/graphql'
 });
@@ -39,11 +38,13 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 ReactDOM.render(
-  <BrowserRouter>
+  <>
+      <BrowserRouter>
   <ApolloProvider client = {client}>
     <App />
   </ApolloProvider>
   </BrowserRouter>
+  </>
   ,
   document.getElementById('root')
 );

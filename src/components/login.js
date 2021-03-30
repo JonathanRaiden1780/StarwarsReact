@@ -41,16 +41,25 @@ const Login = (props) => {
                 const loggedInUser = storage !== null ? JSON.parse(storage) : null;
                 props.loggedIn(loggedInUser);
                 setLoading(false);
+                const firestore = fire.firestore();
+                const userreg =  firestore.collection('Registro').doc(data.email);
+                 const datausers =  userreg.get();
+                const arraydata = datausers.data();
+                console.log(arraydata);
+                console.log('arraydata');
+                console.log(datausers);
+                localStorage.setItem('userdata', JSON.stringify(arraydata));
             }).catch(error => {
                 toast.error(error.message);
                 setLoading(false);
+                
             });
-
+            
     }
    
     
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs" >
             <Card className={classes.card}>
                 <CardContent>
                     <ToastContainer/>
@@ -145,16 +154,17 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(1),
       },
       submit: {
-          background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-          margin: theme.spacing(3, 0, 2),
-          color: '#fff'
+        backgroundColor: ' #ffe81c',
+        margin: theme.spacing(3, 0, 2),
+        color: '#050628'
       },
       card: {
           marginTop: '60px',
           paddingLeft: '20px',
           paddingRight: '20px',
           paddingBottom: '20px',
-      },
+          opacity: '0.7'        
+        },
       pointer: {
           cursor: 'pointer',
           color: 'red'
