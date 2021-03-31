@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import NavBar from './components/nav';
 import Login from './components/login';
 import SignUp from './components/register';
-import './app.css'
+import Search from './components/landingstar'
 //import Customer from './screens/Customer';
 
 function App() {
@@ -19,21 +19,26 @@ function App() {
 
   useEffect(() => {
     userState();
-  }, []);
-  return (
-    <html className='app'> 
-      {user !== null ? (
-        <>
-        <NavBar setUserState={() => setUser(null)}/>
+  }, []); 
+  return ( 
+    <html className='app' style="background-color: transparent"> 
 
+      {
+      user !== null ? (
+        <>
+       <NavBar className="nav" setUserState={() => setUser(null)}/>
+
+        <Search />
         </>
+        
       ) : (
          <>
          {toggleForm ? (<Login loggedIn={(user) => setUser(user)} toggle={() => formMode()}/>) 
          : ( <SignUp toggle={() => formMode()}/>)}
-        
      </>
-      )} 
+      )
+      } 
+      
     </html >
    
   );

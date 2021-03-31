@@ -54,6 +54,10 @@ const Login = (props) => {
                 setLoading(false);
                 
             });
+
+            const fires = fire.firestore();
+             const tempdata = fires.collection('Registro').doc(email)
+             const data = tempdata.get().then(x => { localStorage.setItem('user_name',(x.data().name)); localStorage.setItem('username',(x.data().username))}) 
             
     }
    
@@ -163,7 +167,6 @@ const useStyles = makeStyles((theme) => ({
           paddingLeft: '20px',
           paddingRight: '20px',
           paddingBottom: '20px',
-          opacity: '0.7'        
         },
       pointer: {
           cursor: 'pointer',
