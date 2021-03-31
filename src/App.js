@@ -21,7 +21,7 @@ function App() {
     userState();
   }, []); 
   return ( 
-    <html className='app' style="background-color: transparent"> 
+    <html className='app' > 
 
       {
       user !== null ? (
