@@ -10,10 +10,11 @@ import gql from 'graphql-tag';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { useQuery } from '@apollo/client';
-
+import './landing.css'
 function Landingstar() {
  
   const useStyles = makeStyles((theme) => ({
+    
     root: {
       flexGrow: 2
     },
@@ -28,7 +29,7 @@ function Landingstar() {
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
-    },
+    }
   }));
   const classes = useStyles();
 
@@ -66,7 +67,7 @@ return (
 <div className={classes.root}>
 <h1 className={classes.h1}>Peliculas</h1>
 <Grid container spacing={2}>
-<Grid item xs={4}>
+<Grid className={classes.grid} item xs={4}>
     <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
@@ -95,7 +96,7 @@ return (
   </Card>
     </Paper>
   </Grid>
-  <Grid item xs={4}>
+  <Grid className={classes.grid} item xs={4}>
     <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
@@ -125,7 +126,7 @@ return (
   </Card>
     </Paper>
   </Grid>
-  <Grid item xs={4}>    <Paper className={classes.paper}>
+  <Grid className={classes.grid} item xs={4}>    <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
       <CardMedia
@@ -155,7 +156,7 @@ return (
   </Grid>
 </Grid>
 <Grid container spacing={3}>
-  <Grid item xs={4}>
+  <Grid className={classes.grid} item xs={4}>
     <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
@@ -184,7 +185,7 @@ return (
   </Card>
     </Paper>
   </Grid>
-  <Grid item xs={4}>
+  <Grid className={classes.grid} item xs={4}>
     <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
@@ -213,7 +214,7 @@ return (
   </Card>
     </Paper>
   </Grid>
-  <Grid item xs={4}>
+  <Grid className={classes.grid} item xs={4}>
     <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
@@ -246,7 +247,7 @@ return (
 {/* ------------------------------------------------------- */}
 <h1 className={classes.h1}>Personajes Principales</h1>
 <Grid container spacing={2}>
-<Grid item xs={2}>
+<Grid className={classes.grid} item xs={2}>
     <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
@@ -272,7 +273,7 @@ return (
   </Card>
     </Paper>
   </Grid>
-  <Grid item xs={2}>
+  <Grid className={classes.grid} item xs={2}>
     <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
@@ -299,7 +300,7 @@ return (
   </Card>
     </Paper>
   </Grid>
-  <Grid item xs={2}>    <Paper className={classes.paper}>
+  <Grid className={classes.grid} item xs={2}>    <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
       <CardMedia
@@ -326,7 +327,7 @@ return (
   </Grid>
 </Grid>
 <Grid container spacing={3}>
-  <Grid item xs={2}>
+  <Grid className={classes.grid} item xs={2}>
     <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
@@ -352,7 +353,7 @@ return (
   </Card>
     </Paper>
   </Grid>
-  <Grid item xs={2}>
+  <Grid className={classes.grid} item xs={2}>
     <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
@@ -378,7 +379,7 @@ return (
   </Card>
     </Paper>
   </Grid>
-  <Grid item xs={2}>
+  <Grid className={classes.grid} item xs={2}>
     <Paper className={classes.paper}>
     <Card className={classes.root}>
     <CardActionArea>
